@@ -1,8 +1,6 @@
 package config
 
 import (
-	"os"
-
 	"github.com/spf13/viper"
 )
 
@@ -62,9 +60,6 @@ func Init() (*Config, error) {
 }
 
 func parseEnv(cfg *Config) error {
-	os.Setenv("TOKEN", "1644942107:AAHtsjOyOiXYf85FLFT71DRhTj24XhbtokU")
-	os.Setenv("POCKET_TOKEN", "96253-e10f8e860eaafd3cacbfbe04")
-	os.Setenv("REDIRECT_UTL", "http://localhost:8080/")
 
 	if err := viper.BindEnv("TOKEN"); err != nil {
 		return err
@@ -74,12 +69,12 @@ func parseEnv(cfg *Config) error {
 		return err
 	}
 
-	if err := viper.BindEnv("REDIRECT_UTL"); err != nil {
+	if err := viper.BindEnv("REDIRECT_UTR"); err != nil {
 		return err
 	}
 
 	cfg.TelegramToken = viper.GetString("TOKEN")
 	cfg.PocketApiToken = viper.GetString("POCKET_TOKEN")
-	cfg.AuthServerURL = viper.GetString("REDIRECT_UTL")
+	cfg.AuthServerURL = viper.GetString("REDIRECT_UTR")
 	return nil
 }
