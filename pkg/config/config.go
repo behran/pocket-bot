@@ -65,16 +65,16 @@ func parseEnv(cfg *Config) error {
 		return err
 	}
 
-	if err := viper.BindEnv("POCKET_TOKEN"); err != nil {
+	if err := viper.BindEnv("CONSUMER_KEY"); err != nil {
 		return err
 	}
 
-	if err := viper.BindEnv("REDIRECT_UTR"); err != nil {
+	if err := viper.BindEnv("AUTH_SERVER_URL"); err != nil {
 		return err
 	}
 
 	cfg.TelegramToken = viper.GetString("TOKEN")
-	cfg.PocketApiToken = viper.GetString("POCKET_TOKEN")
-	cfg.AuthServerURL = viper.GetString("REDIRECT_UTR")
+	cfg.PocketApiToken = viper.GetString("CONSUMER_KEY")
+	cfg.AuthServerURL = viper.GetString("AUTH_SERVER_URL")
 	return nil
 }
